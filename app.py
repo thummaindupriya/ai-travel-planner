@@ -3,7 +3,11 @@ import requests
 import time
 
 # --- CONFIGURATION ---
-API_KEY = "YOUR_HUGGINGFACE_API_KEY"
+import os
+API_KEY = os.getenv("HUGGINGFACE_API_KEY")
+if not API_KEY:
+    st.error("Hugging Face API key not found. Please set it in Streamlit Secrets.")
+    st.stop()
 
 
 MODELS = {
